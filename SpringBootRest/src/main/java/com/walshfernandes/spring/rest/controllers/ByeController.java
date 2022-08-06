@@ -1,11 +1,13 @@
 package com.walshfernandes.spring.rest.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.walshfernandes.spring.rest.beans.Bye;
+import com.walshfernandes.spring.rest.service.ByeService;
 
 /*
  * Here as we have used Controller we have to specify @ResponseBody 
@@ -14,9 +16,11 @@ import com.walshfernandes.spring.rest.beans.Bye;
  * */
 @Controller
 public class ByeController {
+	@Autowired
+	private ByeService byeService;
 	
 	@GetMapping("/bye")
 	public @ResponseBody Bye doBye(@RequestParam("user") String user) {
-		return new Bye(user, "Bye");
+		return byeService.getBye(user);
 	}
 }
