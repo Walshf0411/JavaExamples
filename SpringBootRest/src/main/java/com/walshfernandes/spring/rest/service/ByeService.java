@@ -1,5 +1,7 @@
 package com.walshfernandes.spring.rest.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.walshfernandes.spring.rest.beans.Bye;
@@ -13,7 +15,11 @@ import com.walshfernandes.spring.rest.beans.Bye;
 
 @Component
 public class ByeService {
+	@Autowired
+	@Qualifier("byeMessageFormat") 
+	private String format;
+	
 	public Bye getBye(String name) {
-		return new Bye(name, String.format("Bye, %s!", name));
+		return new Bye(name, String.format(format, name));
 	}
 }

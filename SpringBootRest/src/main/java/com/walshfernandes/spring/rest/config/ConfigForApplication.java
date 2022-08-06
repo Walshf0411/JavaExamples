@@ -1,8 +1,10 @@
 package com.walshfernandes.spring.rest.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.walshfernandes.spring.rest.service.GreetingService;
 
@@ -45,5 +47,23 @@ public class ConfigForApplication {
 	@Bean
 	public GreetingService greetingService() {
 		return new GreetingService();
+	}
+	
+	/*
+	 * Mutliple beans of the same type can type will cause a conflict.
+	 * To resole this you can do this
+	 * 1. Make one of them primary, by using @Primary annotation
+	 * */
+	
+	@Primary
+	@Bean
+	public String greetingMessageFormat() {
+		return "Hello %s";
+	}
+	
+	@Bean
+	@Qualifier("byeMessageFormat")
+	public String byeMessageFormat() {
+		return "Bye, %s!";
 	}
 }
