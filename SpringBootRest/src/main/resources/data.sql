@@ -1,0 +1,1 @@
+Create table users(name varchar(20), age decfloat)

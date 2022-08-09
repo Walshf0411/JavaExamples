@@ -1,15 +1,7 @@
 package com.walshfernandes.spring.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.walshfernandes.spring.rest.config.ConfigForApplication;
-import com.walshfernandes.spring.rest.service.ByeService;
-import com.walshfernandes.spring.rest.service.GreetingService;
 
 /*
  * The @SpringBootApplication annotation is basically the same as
@@ -20,7 +12,6 @@ import com.walshfernandes.spring.rest.service.GreetingService;
  * @EnableAutoConfiguration -> loads beans from the classpasth as well
  * */
 
-//
 @SpringBootApplication
 public class Main {
 	public static void main(String args[]) {
