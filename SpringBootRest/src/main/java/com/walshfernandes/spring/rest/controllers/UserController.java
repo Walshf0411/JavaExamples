@@ -18,7 +18,7 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping("/user/add")
-	public User createUser(@RequestBody User user) {
+	public User createUser(User user) {
 		System.out.println("Creating user");
 		System.out.println("USER NAME: " + user.getName());
 		userService.createUser(user);

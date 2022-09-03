@@ -1,6 +1,7 @@
 package com.walshfernandes.spring.rest.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -42,6 +43,7 @@ import com.walshfernandes.spring.rest.service.GreetingService;
  * */
 @Configuration
 @ComponentScan(basePackages = {"com.walshfernandes"})
+@EnableAutoConfiguration
 public class ConfigForApplication {
 	
 	@Bean

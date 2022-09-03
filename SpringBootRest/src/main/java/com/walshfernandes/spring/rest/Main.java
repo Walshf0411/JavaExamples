@@ -1,7 +1,14 @@
 package com.walshfernandes.spring.rest;
 
+import java.util.Optional;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.walshfernandes.spring.rest.beans.User;
+import com.walshfernandes.spring.rest.config.ConfigForApplication;
+import com.walshfernandes.spring.rest.service.UserService;
 
 /*
  * The @SpringBootApplication annotation is basically the same as
@@ -11,7 +18,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 
  * @EnableAutoConfiguration -> loads beans from the classpasth as well
  * */
-
 @SpringBootApplication
 public class Main {
 	public static void main(String args[]) {
@@ -24,6 +30,11 @@ public class Main {
 //		ctx.register(ConfigForApplication.class);
 //		ctx.refresh();
 //		
-//		ctx.getBean(ByeService.class);
+//		UserService userService = ctx.getBean(UserService.class);
+//		userService.createUser(new User("walsh", 24));
+//		
+//		userService.getUsers(Optional.ofNullable("walsh"), Optional.ofNullable(24))
+//			.stream()
+//			.forEach(e->System.out.println(e.getName() + " - " + e.getAge()));
 	}
 }

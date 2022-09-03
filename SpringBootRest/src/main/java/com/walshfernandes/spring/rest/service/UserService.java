@@ -39,7 +39,8 @@ public class UserService {
 	}
 	
 	public List<User> getUsers(Optional<String> name, Optional<Integer> age) {
-		String query = buildQueryString(name, age);
+//		String query = buildQueryString(name, age);
+		String query = "SELECT * FROM users";
 		final List<User> users = new ArrayList<User>();
 		
 		jdbcOps.query(query, new RowCallbackHandler() {

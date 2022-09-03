@@ -1,5 +1,7 @@
 package com.walshfernandes.spring.rest.controllers;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ import com.walshfernandes.spring.rest.service.ByeService;
  * */
 @Controller
 public class ByeController {
-	@Autowired
+	@Resource
 	private ByeService byeService;
 	
 	@GetMapping("/bye")
