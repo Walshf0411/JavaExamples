@@ -15,6 +15,7 @@ public class ForkJoinPoolMain {
 	public static void main(String args[]) throws InterruptedException {
 		System.out.println("Simulating multiple service check using fork join pool");
 		CountDownLatch latch = new CountDownLatch(2);
+		
 		final List<AbstractServiceHealthChecker> healthCheckers = new ArrayList<>();
 		healthCheckers.add(new DatabaseHealthChecker(latch));
 		healthCheckers.add(new CacheHealthChecker(latch));
