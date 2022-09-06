@@ -53,11 +53,38 @@ RecursiveTask<Integer> recursiveTask = new CustomRecursiveTask(generateRandomArr
 
 Source: [https://www.baeldung.com/java-fork-join](https://www.baeldung.com/java-fork-join)
 
+### Executors
+An executor can be created as follows
 
+```java
+ExecutorService service = Executors.newFixedThreadPool(2);
+```
 
+#### Submitting tasks to the pool
+Tasks can be submitted in the following ways
 
+```java
+service.execute(()->System.out.println("Runnable ")); // Submitting a runnable, execute is a void method
+		
+Future<String> future = service.submit(() -> "Service run"); // submitting a callable, submit returns a future
+		
+List<Callable<String>> runnables = Arrays.asList(()->"service 1", ()->"service 2");
+List<Future<String>> futures = service.invokeAll(runnables); // invokeAll passes all the callables to the pool and returns a list for futures
+		
+String aFuture = service.invokeAny(runnables); // passess all the tasks to the pool and returns the result of any one of the successfully completed tasks(if there were any)
+```
 
-
+#### Shutting down executor service safely
+```java
+executorService.shutdown();
+try {
+    if (!executorService.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+        executorService.shutdownNow();
+    } 
+} catch (InterruptedException e) {
+    executorService.shutdownNow();
+}
+```
 
 
 
