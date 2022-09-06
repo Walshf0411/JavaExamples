@@ -48,8 +48,7 @@ RecursiveTask<Integer> recursiveTask = new CustomRecursiveTask(generateRandomArr
 		logger.info("Final sum: " + pool.submit(recursiveTask).get());
 ```
 
-**Note:** It is importatnt to call the get method on the ForkJoinTask to actually get the task started.
-The get method blocks the current thread until execution is completed.
+**Note:** The get method blocks the current thread until execution is completed. However, if we dont call the get method, and simply submit the task to the pool & the main method has nothing else to do the application would exit, without the tasks completing.
 
 
 Source: [https://www.baeldung.com/java-fork-join](https://www.baeldung.com/java-fork-join)

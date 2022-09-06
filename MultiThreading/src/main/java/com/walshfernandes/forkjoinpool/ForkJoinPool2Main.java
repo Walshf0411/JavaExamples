@@ -20,20 +20,23 @@ public class ForkJoinPool2Main {
 		
 //		pool.submit(() -> System.out.println("asdas")); // Runnable
 //		ForkJoinTask<String> callableTask = pool.submit(() -> "Walsh"); // Callable
-//		ForkJoinTask<String> runnableTask2 = pool.submit(() -> {
-//			try {
-//				logger.info("Sleeping....");
-//				Thread.sleep(2000);
-//				logger.info("Running....");	
-//			} catch(InterruptedException e) {}
-//		}, "walsh"); // Runnable with predefined result
+		ForkJoinTask<String> runnableTask2 = pool.submit(() -> {
+			try {
+				logger.info("Runnable task is sleeping....");
+				Thread.sleep(3000);
+				logger.info("Runnable task is done!");	
+			} catch(InterruptedException e) {}
+		}, "walsh"); // Runnable with predefined result
 //		
 //		System.out.println(callableTask.get());
 //		logger.info(runnableTask2.get());
-//		logger.info("Got output from runnableTask2");
 		
-//		RecursiveAction recursiveAction = new CustomRecursiveAction(generateRandomString(100));
-//		pool.submit(recursiveAction).get();
+		RecursiveAction recursiveAction = new CustomRecursiveAction(generateRandomString(100));
+		pool.submit(recursiveAction);
+		
+		logger.info("Waiting for recursive action to complete");
+		Thread.sleep(1000);
+		logger.info("Main thread exiting");
 		
 //		RecursiveTask<Integer> recursiveTask = new CustomRecursiveTask(generateRandomArray(100));
 //		logger.info("Final sum: " + pool.submit(recursiveTask).get());
